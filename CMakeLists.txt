@@ -4,7 +4,13 @@ project(hello_glfw)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++ -framework OpenGL -framework AppKit -framework IOKit -framework CoreGraphics")
 
-add_executable(hello_glfw ${CMAKE_SOURCE_DIR}/src/glad.c main.cpp)
+add_executable(hello_glfw ${CMAKE_SOURCE_DIR}/src/glad.c main.cpp
+        src/shader/shader.h
+        src/shader/shader.cpp
+        src/window/window.cpp
+        src/window/window.h
+        src/gl_helper/GlHelper.cpp
+        src/gl_helper/GlHelper.h)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
