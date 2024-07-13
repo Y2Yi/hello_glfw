@@ -40,9 +40,9 @@ int main()
     /// 声明定点：
     float vertices[] = {
         // positions         // colors
-        0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom right
-        -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // bottom left
-        0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f // top
+        -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom right
+        0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // bottom left
+        0.0f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f // top
     };
     // 声明定点信息
     unsigned int VBO, VAO;
@@ -76,10 +76,13 @@ int main()
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        int uniform_vertexOffset = glGetUniformLocation(ourShader->ID, "offset_uniform"); // 找到Uniform
+        // 绑定Uniform
+        /// 注意，这个步骤必须发生在use之后
+        glUniform3f(uniform_vertexOffset, 0.5f, 0.5, 0);
         ourShader->use();
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
-
         /// 检查并调用事件、交换缓冲
         glfwSwapBuffers(window);
         glfwPollEvents();
