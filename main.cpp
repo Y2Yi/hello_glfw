@@ -37,7 +37,7 @@ int main()
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     // 创建Shader
-    Shader* ourShader = new Shader("./glsl/vertex_shader.vs", "./glsl/fragment_shader.fs");
+    Shader* ourShader = new Shader("../assets/glsl/vertex_shader.vs", "../assets/glsl/fragment_shader.fs");
 
     /// 声明定点：
     float vertices[] = {
@@ -104,7 +104,7 @@ void generateTexture()
 {
     /// 加载图片
     int width, height, nrChannels;
-    unsigned char* data = stbi_load("resource/sample.jpeg", &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load("../assets/resource/sample.jpeg", &width, &height, &nrChannels, 0);
     if (!data)
     {
         std::cout << "Failed to load texture" << std::endl;
