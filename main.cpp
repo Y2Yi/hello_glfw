@@ -84,6 +84,8 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         ourShader->use();
+        // glBindVertexArray(VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         /// 检查并调用事件、交换缓冲
         glfwSwapBuffers(window);
@@ -91,6 +93,7 @@ int main()
     }
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1,&EBO);
 
     /// 确保GLFW资源能够被正确地释放
     glfwTerminate();
