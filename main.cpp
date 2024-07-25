@@ -42,10 +42,13 @@ int main()
     /// 声明定点：
     float vertices[] = {
         //     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
-        0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // 右上
+        0.5f, 0.4f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // 右上
         0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // 右下
-        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // 左下
-        -0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f // 左上
+        -0.4f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // 左下
+
+        0.4f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // 右上
+        -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, // 右下
+        -0.5f, -0.4f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // 左下
     };
 
     // 声明定点信息
@@ -59,8 +62,8 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     unsigned int indices[] = {
-        0, 1, 3, // first triangle
-        1, 2, 3 // second triangle
+        0, 1, 2, // first triangle
+        3, 4, 5 // second triangle
     };
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
@@ -85,7 +88,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
         ourShader->use();
         // glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        // glDrawArrays(GL_TRIANGLES, 0, 3);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         /// 检查并调用事件、交换缓冲
         glfwSwapBuffers(window);
@@ -93,7 +96,7 @@ int main()
     }
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1,&EBO);
+    glDeleteBuffers(1, &EBO);
 
     /// 确保GLFW资源能够被正确地释放
     glfwTerminate();
@@ -107,6 +110,7 @@ void generateTexture()
 {
     /// 加载图片
     int width, height, nrChannels;
+    stbi_set_flip_vertically_on_load(true);
     unsigned char* data = stbi_load("../assets/resource/sample.jpeg", &width, &height, &nrChannels, 0);
     if (!data)
     {
