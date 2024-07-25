@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 #include "./src/window/window.h"
 #include "src/shader/shader.h"
-#include "src/chapter/texture/stb_image.h"
+#include "src/texture/header/stb_image.h"
 
 class Shader;
 
