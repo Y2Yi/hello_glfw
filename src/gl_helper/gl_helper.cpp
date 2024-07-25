@@ -2,7 +2,7 @@
 // Created by 岳郅宇 on 2024/7/13.
 //
 
-#include "GlHelper.h"
+#include "gl_helper.h"
 
 #include <iostream>
 #include <glad/glad.h>

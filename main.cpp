@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include "./src/window/window.h"
 #include "src/shader/shader.h"
+#include "src/chapter/texture/header/texture_1.h"
 
 int main()
 {
@@ -31,7 +32,11 @@ int main()
     /// 告诉OpenGL Viewport的尺寸、注册尺寸变更的回调
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+    auto* chapterModule = new TextureChapterModule();
 
+    chapterModule->deletegateMain(window);
+
+    delete chapterModule;
 
     /// 确保GLFW资源能够被正确地释放
     glfwTerminate();

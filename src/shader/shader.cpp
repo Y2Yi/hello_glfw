@@ -3,6 +3,10 @@
 //
 
 #include "shader.h"
+#include <glad/glad.h>; // 包含glad来获取所有的必须OpenGL头文件
+#include <string>
+#include <sstream>
+#include <iostream>
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {

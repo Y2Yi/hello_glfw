@@ -1,23 +1,17 @@
 //
 // Created by 岳郅宇 on 2024/7/25.
 //
-
-#include <iostream>
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include "../src/shader/shader.h"
+#include <iostream>
+#include "header/texture_1.h"
 #include "../src/texture/header/stb_image.h"
+#include "../src/shader/shader.h"
 #include "../src/window/window.h"
 
-
-class Shader;
-
-void generateTexture();
-
-void doSomeThing(GLFWwindow* window)
+void TextureChapterModule::deletegateMain(GLFWwindow* window)
 {
     // 创建Shader
-    Shader* ourShader = new Shader("../assets/glsl/vertex_shader.vs", "../assets/glsl/fragment_shader.fs");
+    auto* ourShader = new Shader("../assets/glsl/vertex_shader.vs", "../assets/glsl/fragment_shader.fs");
 
     /// 声明定点：
     float vertices[] = {
@@ -83,7 +77,7 @@ void doSomeThing(GLFWwindow* window)
 }
 
 //// 加载纹理
-void generateTexture()
+void TextureChapterModule::generateTexture()
 {
     /// 加载图片
     int width, height, nrChannels;
