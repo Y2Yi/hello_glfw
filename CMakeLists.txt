@@ -12,7 +12,10 @@ add_executable(hello_glfw ${CMAKE_SOURCE_DIR}/src/glad.c main.cpp
         src/gl_helper/GlHelper.cpp
         src/gl_helper/GlHelper.h
         src/texture/header/stb_image.h
-        src/texture/stb_image.cpp)
+        src/texture/stb_image.cpp
+        src/chapter/texture/texture_1.cpp
+        src/chapter/chapter_module/ChapterModule.cpp
+        src/chapter/chapter_module/ChapterModule.h)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
